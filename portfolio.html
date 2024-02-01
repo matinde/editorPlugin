@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.2/dist/tailwind.min.css" rel="stylesheet">
+    
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="bg-gray-800 py-2 sticky top-0">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between">
+                <a href="#" class="text-gray-300 text-sm font-semibold uppercase hover:text-white">Logo</a>
+                <div class="flex space-x-4">
+                    <a href="#about" class="text-gray-300 text-sm hover:text-white">About</a>
+                    <a href="#skills" class="text-gray-300 text-sm hover:text-white">Skills</a>
+                    <a href="#portfolio" class="text-gray-300 text-sm hover:text-white">Portfolio</a>
+                    <a href="#contact" class="text-gray-300 text-sm hover:text-white">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative bg-gray-900" >
+        <div class="custom-height flex items-center justify-center" id="hero-content">
+            <div class="container mx-auto px-4">
+                <div class="flex flex-col items-center justify-center text-center">
+                    <h1 class="text-4xl font-bold text-white">Welcome to My Portfolio</h1>
+                    <p class="mt-4 text-lg text-gray-300">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+            </div>
+        </div>
+    </header>
+        
+    
+    <style>
+        .custom-height {
+            height: 500px;
+        }
+    </style>
+
+    <!-- About Section -->
+    <section id="about" class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap items-center -mx-4 editable">
+                <div class="w-full md:w-1/2 px-4" id="imageScale">
+                    <img src="download.jpeg" alt="About Me" class="rounded-lg shadow-xl editable">
+                </div>
+                <div class="w-full md:w-1/2 px-4 mt-8 md:mt-0">
+                    <h2 class="text-2xl font-bold">About Me</h2>
+                    <p class="mt-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum
+                        laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="bg-gray-100 py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl font-bold text-center mb-8">My Skills</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg shadow p-6">
+                    <h3 class="text-lg font-bold">Programming</h3>
+                    <div class="mt-4">
+                        <!-- Insert programming graph here -->
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow p-6">
+                    <h3 class="text-lg font-bold">Web Design</h3>
+                    <div class="mt-4">
+                        <!-- Insert web design graph here -->
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow p-6">
+                    <h3 class="text-lg font-bold">App Development</h3>
+                    <div class="mt-4">
+                        <!-- Insert app development graph here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl font-bold text-center mb-8">My Portfolio</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Placeholder images for portfolio -->
+                <div class="bg-gray-200 rounded-lg shadow p-6 flex items-center justify-center editable">
+                    <img src="https://via.placeholder.com/500" alt="Portfolio">
+                </div>
+                <div class="bg-gray-200 rounded-lg shadow p-6 flex items-center justify-center editable">
+                    <img src="https://via.placeholder.com/500" alt="Portfolio">
+                </div>
+                <div class="bg-gray-200 rounded-lg shadow p-6 flex items-center justify-center editable">
+                    <img src="https://via.placeholder.com/500" alt="Portfolio">
+                </div>
+                <div class="bg-gray-200 rounded-lg shadow p-6 flex items-center justify-center editable">
+                    <img src="https://via.placeholder.com/500" alt="Portfolio">
+                </div>
+                <div class="bg-gray-200 rounded-lg shadow p-6 flex items-center justify-center editable">
+                    <img src="https://via.placeholder.com/500" alt="Portfolio">
+                </div>
+                <div class="bg-gray-200 rounded-lg shadow p-6 flex items-center justify-center editable">
+                    <img src="https://via.placeholder.com/500" alt="Portfolio">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="bg-gray-100 py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl font-bold text-center mb-8">Contact Me</h2>
+            <div class="max-w-lg mx-auto">
+                <form>
+                    <div class="mb-4">
+                        <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+                        <input type="text" id="name" name="name"
+                            class="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm border-gray-300 rounded-md">
+                    </div>
+                    <div class="mb-4">
+                        <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                        <input type="email" id="email" name="email"
+                            class="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm border-gray-300 rounded-md">
+                    </div>
+                    <div class="mb-4">
+                        <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+                        <textarea id="message" name="message" rows="4"
+                            class="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm border-gray-300 rounded-md"></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit"
+                            class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                            Send Message
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section> 
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 py-4">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <p class="text-sm text-gray-300">© 2021 My Portfolio. All Rights Reserved.</p>
+            <div class="flex space-x-2">
+                <!-- Replace the social icons with your favorite icons -->
+                <a href="#" class="text-gray-300 hover:text-white">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <!-- Social icon SVG code -->
+                    </svg>
+                </a>
+                <a href="#" class="text-gray-300 hover:text-white">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <!-- Social icon SVG code -->
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="editorPlugin.js"></script>
+    
+    </body>
+    
+    </html>
