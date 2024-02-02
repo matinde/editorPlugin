@@ -66,12 +66,13 @@ document.body.addEventListener('mousemove', function(event) {
 });
 
 // Create a button for each section
-['Header', 'Layout', 'Grid', 'Headers'].forEach(function(section) {
+['Headers', 'Text', 'Images', 'Lists'].forEach(function(section) {
     var button = document.createElement('button');
     button.textContent = section;
     button.style.width = '90%';
     button.style.margin = '10px';
-    button.style.backgroundImage = 'linear-gradient(to bottom, white, lightgrey)';
+    button.style.backgroundColor = 'purple';
+    button.style.color = 'white';
     button.style.border = '1px solid grey';
     button.classList.add('btn');
     editor.appendChild(button);
@@ -129,7 +130,7 @@ var buttonContainer = document.createElement('div');
 buttonContainer.style.width = '100%';
 buttonContainer.style.display = 'flex';
 buttonContainer.style.justifyContent = 'space-between';
-buttonContainer.style.backgroundColor = 'grey';
+buttonContainer.style.backgroundColor = 'bg-sky-900';
 editor.insertBefore(buttonContainer, editor.firstChild);
 
 // Create the Save button
