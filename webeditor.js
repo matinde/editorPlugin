@@ -1,4 +1,3 @@
-
 var snippets = [
     {
         title: 'Single Column',
@@ -52,7 +51,7 @@ editor.style.top = '0';
 editor.style.width = '0';
 editor.style.height = '100vh';
 editor.style.backgroundColor = '#f9f9f9';
-editor.style.borderLeft = '1px solid #000';
+editor.style.borderLeft = '1px solid lightgrey';
 editor.style.overflowX = 'hidden';
 editor.style.transition = '0.5s'; // Add transition for sliding effect
 document.body.appendChild(editor);
@@ -67,18 +66,20 @@ document.body.addEventListener('mousemove', function(event) {
 });
 
 // Create a button for each section
-['Header', 'Layout'].forEach(function(section) {
+['Header', 'Layout', 'Grid', 'Headers'].forEach(function(section) {
     var button = document.createElement('button');
     button.textContent = section;
-    button.style.width = '100%';
-    button.style.backgroundColor = '#f9f9f9';
-    button.style.border = '1px solid #000';
+    button.style.width = '90%';
+    button.style.margin = '10px';
+    button.style.backgroundImage = 'linear-gradient(to bottom, white, lightgrey)';
+    button.style.border = '1px solid grey';
+    button.classList.add('btn');
     editor.appendChild(button);
 
     // Create a div for the section content
     var content = document.createElement('div');
     content.style.display = 'none'; // Initially hide the content
-    content.style.border = '1px solid #000';
+    content.style.border = '1px solid lightgrey';
     content.style.padding = '10px';
     editor.appendChild(content);
 
@@ -105,20 +106,9 @@ document.body.addEventListener('mousemove', function(event) {
         });
         content.appendChild(div);
     });
+
 });
 
-// Create a drop zone
-var dropZone = document.createElement('div');
-dropZone.id = 'drop-zone';
-dropZone.addEventListener('dragover', function(event) {
-    event.preventDefault(); // Prevent default to allow drop
-});
-dropZone.addEventListener('drop', function(event) {
-    event.preventDefault(); // Prevent default action (open as link for some elements)
-    var data = event.dataTransfer.getData('text/plain');
-    dropZone.innerHTML += data;
-});
-document.body.appendChild(dropZone);
 
 // Below creates the drop zone for the editor
 var dropZone = document.getElementById('drop-zone');
@@ -132,3 +122,34 @@ dropZone.addEventListener('drop', function(event) {
     var data = event.dataTransfer.getData('text/plain');
     dropZone.innerHTML += data;
 });
+
+
+// Create a div for the buttons
+var buttonContainer = document.createElement('div');
+buttonContainer.style.width = '100%';
+buttonContainer.style.display = 'flex';
+buttonContainer.style.justifyContent = 'space-between';
+buttonContainer.style.backgroundColor = 'grey';
+editor.insertBefore(buttonContainer, editor.firstChild);
+
+// Create the Save button
+var saveButton = document.createElement('button');
+saveButton.textContent = 'Save';
+saveButton.style.width = '45%';
+saveButton.style.margin = '10px';
+saveButton.style.backgroundColor = 'blue';
+saveButton.style.borderRadius = '2px';
+saveButton.style.color = 'white';
+saveButton.classList.add('btn');
+buttonContainer.appendChild(saveButton);
+
+// Create the Download button
+var downloadButton = document.createElement('button');
+downloadButton.textContent = 'Download';
+downloadButton.style.width = '45%';
+downloadButton.style.margin = '10px';
+downloadButton.style.backgroundColor = 'orange';
+downloadButton.style.borderRadius = '2px';
+downloadButton.style.color = 'white';
+downloadButton.classList.add('btn');
+buttonContainer.appendChild(downloadButton);
