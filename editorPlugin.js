@@ -1,7 +1,10 @@
+// Declare editorContainer as a global variable
+var editorContainer;
+
 document.addEventListener("DOMContentLoaded", function () {
     function createInlineEditor(element, type) {
         // Create inline editor container
-        var editorContainer = document.createElement('div');
+        editorContainer = document.createElement('div');
         editorContainer.classList.add('inline-editor');
         editorContainer.style.position = 'absolute';
         editorContainer.style.backgroundColor = '#f9f9f9'; // Set your desired background color
@@ -19,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <label>Font Size:</label>
             <input type="number" class="font-size-input" value="${getComputedStyle(element).fontSize.replace('px', '')}">
             <label>Font Color:</label>
-            <input type="color" class="font-color-input" value="${getComputedStyle(element).color}">
+            <input type="color" class="font-color-input" value="${rgbToHex(getComputedStyle(element).color)}">
             <label>Font Style:</label>
             <select class="font-style-select">
                 <option value="normal">Normal</option>
@@ -46,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
             inputField.innerHTML = `
                 <label for="image-upload" class="upload-label">Upload Image:</label>
                 <input type="file" id="image-upload" accept="image/*" class="image-upload">
-                <img src="${element.getAttribute('src')}" alt="Uploaded Image" class="uploaded-image">
+                <img src="${element.getAttribute('src')}" alt="Uploaded Image" class="uploaded-image" style="max-width: 100%;">
             `;
             inputField.classList.add('border', 'rounded', 'p-2', 'w-full', 'text-center');
         }
@@ -59,12 +62,17 @@ document.addEventListener("DOMContentLoaded", function () {
         cancelButton.innerHTML = '&#x2716;'; // Unicode for '✖'
         cancelButton.style.transform = 'translate(100%, -100%)'; // Adjusted position
         cancelButton.addEventListener('click', function () {
-            editorContainer.remove();
+            editorContainer.classList.remove('active');
         });
         editorContainer.appendChild(cancelButton);
 
         // Append editor container to the body
         document.body.appendChild(editorContainer);
+
+        // Apply fade-in effect
+        setTimeout(function () {
+            editorContainer.classList.add('active');
+        }, 10);
 
         // Focus on the input field
         if (type === 'text') {
@@ -75,7 +83,6 @@ document.addEventListener("DOMContentLoaded", function () {
         inputField.addEventListener('keydown', function (event) {
             if (event.key === 'Enter') {
                 saveChanges(element, inputField, type);
-                editorContainer.remove();
             }
         });
 
@@ -99,27 +106,43 @@ document.addEventListener("DOMContentLoaded", function () {
         // Add event listener for image upload
         if (type === 'image') {
             var imageUploadInput = inputField.querySelector('.image-upload');
-            var uploadedImage = inputField.querySelector('.uploaded-image');
 
             imageUploadInput.addEventListener('change', function (event) {
-                var file = event.target.files[0];
-                if (file) {
-                    var reader = new FileReader();
-                    reader.onload = function (e) {
-                        uploadedImage.src = e.target.result;
-                    };
-                    reader.readAsDataURL(file);
-                }
+                handleImageUpload(event, inputField, element);
             });
         }
     }
 
     function saveChanges(element, inputField, type) {
         if (type === 'image') {
-            var uploadedImage = inputField.querySelector('.uploaded-image');
-            element.setAttribute('src', uploadedImage.src);
+            handleImageUpload(null, inputField, element);
         } else {
             element.innerText = inputField.value;
+        }
+
+        // Apply fade-out effect
+        editorContainer.classList.remove('active');
+        setTimeout(function () {
+            editorContainer.remove();
+        }, 300); // Adjust this timeout to match the transition duration in CSS
+    }
+
+    function handleImageUpload(event, inputField, element) {
+        var file = event ? event.target.files[0] : null;
+        if (file) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                var uploadedImage = inputField.querySelector('.uploaded-image');
+                uploadedImage.src = e.target.result;
+                element.setAttribute('src', uploadedImage.src);
+
+                // Apply fade-out effect after the image is set
+                editorContainer.classList.remove('active');
+                setTimeout(function () {
+                    editorContainer.remove();
+                }, 300); // Adjust this timeout to match the transition duration in CSS
+            };
+            reader.readAsDataURL(file);
         }
     }
 
@@ -140,4 +163,12 @@ document.addEventListener("DOMContentLoaded", function () {
             createInlineEditor(img, 'image');
         });
     });
+
+    // Utility function to convert rgb to hex
+    function rgbToHex(rgb) {
+        var hex = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+        return "#" + ("0" + parseInt(hex[1], 10).toString(16)).slice(-2) +
+                      ("0" + parseInt(hex[2], 10).toString(16)).slice(-2) +
+                      ("0" + parseInt(hex[3], 10).toString(16)).slice(-2);
+    }
 });
