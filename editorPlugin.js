@@ -159,24 +159,22 @@ document.addEventListener("DOMContentLoaded", function () {
             };
             reader.readAsDataURL(file);
         }
-    }
+    };
 
     // Text Editing
-    var textElements = document.querySelectorAll('p, h1, h2, h3, h4, h5');
-
-    textElements.forEach(function (textElement) {
-        textElement.addEventListener('click', function () {
+    document.body.addEventListener('click', function(event) {
+        var textElement = event.target.closest('p, h1, h2, h3, h4, h5');
+        if (textElement) {
             createInlineEditor(textElement, 'text');
-        });
+        }
     });
 
     // Image Editing
-    var imgElements = document.querySelectorAll('img');
-
-    imgElements.forEach(function (img) {
-        img.addEventListener('click', function () {
-            createInlineEditor(img, 'image');
-        });
+    document.body.addEventListener('click', function(event) {
+        var imgElement = event.target.closest('img');
+        if (imgElement) {
+            createInlineEditor(imgElement, 'image');
+        }
     });
 
     // Utility function to convert rgb to hex
@@ -190,4 +188,4 @@ document.addEventListener("DOMContentLoaded", function () {
                       ("0" + parseInt(hex[3], 10).toString(16)).slice(-2);
     }
 
-});
+}); 
