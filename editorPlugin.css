@@ -1,0 +1,26 @@
+/* styles.css */
+
+.inline-editor {
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.style-tools {
+    padding: 10px;
+    background-color: white;
+    border-bottom: 1px solid #ccc;
+    font-size: 12px;
+}
+
+.style-tools label {
+    margin-right: 5px;
+}
+
+.font-size-input,
+.font-color-input,
+.font-style-select,
+.font-align-select {
+    margin-right: 10px;
+}

@@ -1,35 +1,63 @@
 document.addEventListener("DOMContentLoaded", function () {
     function createInlineEditor(element, type) {
-        var rect = element.getBoundingClientRect();
-        var top = rect.top + window.scrollY;
-        var left = rect.left + window.scrollX;
-
         // Create inline editor container
         var editorContainer = document.createElement('div');
         editorContainer.classList.add('inline-editor');
         editorContainer.style.position = 'absolute';
-        editorContainer.style.top = top + 'px';
-        editorContainer.style.left = left + 'px';
+        editorContainer.style.backgroundColor = '#f9f9f9'; // Set your desired background color
+
+        // Calculate the position and width relative to the clicked element
+        var rect = element.getBoundingClientRect();
+        editorContainer.style.top = rect.top + window.scrollY + 'px';
+        editorContainer.style.left = rect.left + window.scrollX + 'px';
+        editorContainer.style.width = rect.width + 'px';
+
+        // Create style tools container
+        var styleToolsContainer = document.createElement('div');
+        styleToolsContainer.classList.add('style-tools');
+        styleToolsContainer.innerHTML = `
+            <label>Font Size:</label>
+            <input type="number" class="font-size-input" value="${getComputedStyle(element).fontSize.replace('px', '')}">
+            <label>Font Color:</label>
+            <input type="color" class="font-color-input" value="${getComputedStyle(element).color}">
+            <label>Font Style:</label>
+            <select class="font-style-select">
+                <option value="normal">Normal</option>
+                <option value="italic">Italic</option>
+                <option value="oblique">Oblique</option>
+            </select>
+            <label>Font Align:</label>
+            <select class="font-align-select">
+                <option value="left">Left</option>
+                <option value="center">Center</option>
+                <option value="right">Right</option>
+            </select>
+        `;
+        editorContainer.appendChild(styleToolsContainer);
 
         // Create input field for editing
         var inputField;
         if (type === 'text') {
             inputField = document.createElement('textarea');
             inputField.value = element.innerText;
-            inputField.classList.add('border', 'rounded', 'p-2', 'resize-y', 'w-full', 'h-32');
+            inputField.classList.add('border', 'rounded', 'p-2', 'resize-y', 'w-full');
         } else if (type === 'image') {
-            inputField = document.createElement('input');
-            inputField.type = 'text';
-            inputField.value = element.getAttribute('src');
-            inputField.classList.add('border', 'rounded', 'p-2', 'w-full');
+            inputField = document.createElement('div');
+            inputField.innerHTML = `
+                <label for="image-upload" class="upload-label">Upload Image:</label>
+                <input type="file" id="image-upload" accept="image/*" class="image-upload">
+                <img src="${element.getAttribute('src')}" alt="Uploaded Image" class="uploaded-image">
+            `;
+            inputField.classList.add('border', 'rounded', 'p-2', 'w-full', 'text-center');
         }
 
         editorContainer.appendChild(inputField);
 
         // Create [x] button for cancel
         var cancelButton = document.createElement('button');
-        cancelButton.classList.add('text-gray-500', 'rounded-full', 'px-1', 'py-1', 'absolute', 'top-2', 'right-2');
+        cancelButton.classList.add('text-gray-500', 'rounded-full', 'px-1', 'py-1', 'absolute', 'top-0', 'right-0');
         cancelButton.innerHTML = '&#x2716;'; // Unicode for '✖'
+        cancelButton.style.transform = 'translate(100%, -100%)'; // Adjusted position
         cancelButton.addEventListener('click', function () {
             editorContainer.remove();
         });
@@ -39,22 +67,59 @@ document.addEventListener("DOMContentLoaded", function () {
         document.body.appendChild(editorContainer);
 
         // Focus on the input field
-        inputField.focus();
+        if (type === 'text') {
+            inputField.focus();
+        }
 
         // Add event listener for Enter key press to save changes
         inputField.addEventListener('keydown', function (event) {
             if (event.key === 'Enter') {
-                saveChanges(element, inputField.value);
+                saveChanges(element, inputField, type);
                 editorContainer.remove();
             }
         });
+
+        // Add event listeners for style tools
+        styleToolsContainer.querySelector('.font-size-input').addEventListener('input', function (event) {
+            element.style.fontSize = event.target.value + 'px';
+        });
+
+        styleToolsContainer.querySelector('.font-color-input').addEventListener('input', function (event) {
+            element.style.color = event.target.value;
+        });
+
+        styleToolsContainer.querySelector('.font-style-select').addEventListener('change', function (event) {
+            element.style.fontStyle = event.target.value;
+        });
+
+        styleToolsContainer.querySelector('.font-align-select').addEventListener('change', function (event) {
+            element.style.textAlign = event.target.value;
+        });
+
+        // Add event listener for image upload
+        if (type === 'image') {
+            var imageUploadInput = inputField.querySelector('.image-upload');
+            var uploadedImage = inputField.querySelector('.uploaded-image');
+
+            imageUploadInput.addEventListener('change', function (event) {
+                var file = event.target.files[0];
+                if (file) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        uploadedImage.src = e.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
     }
 
-    function saveChanges(element, value) {
-        if (element.tagName.toLowerCase() === 'img') {
-            element.setAttribute('src', value);
+    function saveChanges(element, inputField, type) {
+        if (type === 'image') {
+            var uploadedImage = inputField.querySelector('.uploaded-image');
+            element.setAttribute('src', uploadedImage.src);
         } else {
-            element.innerText = value;
+            element.innerText = inputField.value;
         }
     }
 
