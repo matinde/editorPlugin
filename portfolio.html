@@ -10,7 +10,7 @@
 
 </head>
 
-<body>
+<body id="template">
 
     <!-- Navbar -->
     <nav class="bg-gray-800 py-2 sticky top-0">
@@ -46,6 +46,8 @@
         }
     </style>
 
+    <div class="my-template"></div>
+
     <!-- About Section -->
     <section id="about" class="py-16">
         <div class="container mx-auto px-4">
@@ -55,7 +57,7 @@
                 </div>
                 <div class="w-full md:w-1/2 px-4 mt-8 md:mt-0">
                     <h2 class="text-2xl font-bold">About Me</h2>
-                    <p class="mt-4 editable">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum
+                    <p class="mt-4" contenteditable="true">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum
                         laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.</p>
                 </div>
             </div>
@@ -170,8 +172,8 @@
         </div>
     </footer>
     
-
     <script src="editorPlugin.js"></script>
+
     
     </body>
     

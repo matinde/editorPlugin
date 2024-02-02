@@ -3,6 +3,11 @@ var editorContainer;
 
 document.addEventListener("DOMContentLoaded", function () {
     function createInlineEditor(element, type) {
+        // Check if editor is already active
+        if (document.querySelector('.inline-editor.active')) {
+            return;
+        }
+
         // Create inline editor container
         editorContainer = document.createElement('div');
         editorContainer.classList.add('inline-editor');
@@ -63,6 +68,9 @@ document.addEventListener("DOMContentLoaded", function () {
         cancelButton.style.transform = 'translate(100%, -100%)'; // Adjusted position
         cancelButton.addEventListener('click', function () {
             editorContainer.classList.remove('active');
+            setTimeout(function () {
+                editorContainer.remove();
+            }, 300); // Adjust this timeout to match the transition duration in CSS
         });
         editorContainer.appendChild(cancelButton);
 
@@ -130,6 +138,10 @@ document.addEventListener("DOMContentLoaded", function () {
     function handleImageUpload(event, inputField, element) {
         var file = event ? event.target.files[0] : null;
         if (file) {
+            if (file.size > 5000000) { // 5MB
+                alert('File size should be less than 5MB.');
+                return;
+            }
             var reader = new FileReader();
             reader.onload = function (e) {
                 var uploadedImage = inputField.querySelector('.uploaded-image');
@@ -141,6 +153,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 setTimeout(function () {
                     editorContainer.remove();
                 }, 300); // Adjust this timeout to match the transition duration in CSS
+            };
+            reader.onerror = function () {
+                alert('Failed to read the file.');
             };
             reader.readAsDataURL(file);
         }
@@ -167,8 +182,12 @@ document.addEventListener("DOMContentLoaded", function () {
     // Utility function to convert rgb to hex
     function rgbToHex(rgb) {
         var hex = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+        if (!hex) {
+            return rgb; // Return the original color if it's not in rgb format
+        }
         return "#" + ("0" + parseInt(hex[1], 10).toString(16)).slice(-2) +
                       ("0" + parseInt(hex[2], 10).toString(16)).slice(-2) +
                       ("0" + parseInt(hex[3], 10).toString(16)).slice(-2);
     }
+
 });
