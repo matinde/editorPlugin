@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
         var rect = element.getBoundingClientRect();
         editorContainer.style.top = rect.top + window.scrollY + 'px';
         editorContainer.style.left = rect.left + window.scrollX + 'px';
-        editorContainer.style.width = rect.width + 'px';
+        editorContainer.style.width = (rect.width - 20)  + 'px';
 
         // Create style tools container
         var styleToolsContainer = document.createElement('div');

@@ -1,0 +1,10 @@
+[
+    {
+        "title": "Image1",
+        "html": "<div class=\"container mx-auto py-16 px-6 \">\n        <div class=\"flex flex-wrap items-center -mx-4 \">\n            <div class=\"w-full md:w-1/2 px-4 mt-8 md:mt-0\">\n                <h2 class=\"text-3xl font-bold\">About Me</h2>\n                <p class=\"mt-4\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.</p>\n            </div>\n            <div class=\"w-full md:w-1/2 px-4 text-right\">\n                <img src=\"https://via.placeholder.com/500\" alt=\"About Me\" class=\"rounded-lg shadow-xl\">\n            </div>\n        </div>\n    </div>"
+    },
+    {
+        "title": "Image2",
+        "html": "<div class=\"container mx-auto py-16 px-6\"><h2 class=\"text-3xl font-bold text-center mb-8\">Image Gallery</h2><div class=\"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8\"><div class=\"bg-gray-200 rounded-lg overflow-hidden shadow-lg\"><img src=\"https://via.placeholder.com/500\" alt=\"Gallery Image\" class=\"w-full h-64 object-cover object-center\"><div class=\"p-4\"><h3 class=\"text-xl font-bold mb-2\">Image 1</h3><p class=\"text-gray-600\">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></div></div><div class=\"bg-gray-200 rounded-lg overflow-hidden shadow-lg\"><img src=\"https://via.placeholder.com/500\" alt=\"Gallery Image\" class=\"w-full h-64 object-cover object-center\"><div class=\"p-4\"><h3 class=\"text-xl font-bold mb-2\">Image 2</h3><p class=\"text-gray-600\">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></div></div><div class=\"bg-gray-200 rounded-lg overflow-hidden shadow-lg\"><img src=\"https://via.placeholder.com/500\" alt=\"Gallery Image\" class=\"w-full h-64 object-cover object-center\"><div class=\"p-4\"><h3 class=\"text-xl font-bold mb-2\">Image 3</h3><p class=\"text-gray-600\">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></div></div></div></div>"
+    }
+]

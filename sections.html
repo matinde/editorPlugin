@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Include your custom styles if any -->
+    <title>Your Hero Section</title>
+</head>
+<body>
+
+<!-- Hero Section -->
+
+    <div class="relative bg-gradient-to-r from-purple-700 via-purple-600 to-purple-500 h-screen flex items-center justify-center">
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+        <div class="container mx-auto text-center relative z-10">
+            <h1 class="text-5xl font-extrabold text-white mb-4">Explore the Galaxy</h1>
+            <p class="text-lg text-gray-300 mb-8">Embark on a journey to discover new worlds and adventures.</p>
+            <a href="#" class="bg-white text-purple-700 hover:bg-purple-800 hover:text-white font-bold py-2 px-6 rounded-full">Start Exploring</a>
+        </div>
+    </div>
+
+<!--
+<div class="min-h-screen flex items-center justify-center bg-gray-900">
+    <div class="text-center text-white">
+        <h1 class="text-4xl font-bold mb-4">Your Hero Title</h1>
+        <p class="text-lg mb-8">Your hero subtitle or description goes here.</p>
+        <a href="#" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">Get Started</a>
+    </div>
+</div>
+-->
+
+<!--Image Gallery-->
+    
+<div class="container mx-auto py-16 px-6">
+    <h2 class="text-3xl font-bold text-center mb-8">Image Gallery</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-gray-200 rounded-lg overflow-hidden shadow-lg">
+            <img src="https://via.placeholder.com/500" alt="Gallery Image" class="w-full h-64 object-cover object-center">
+            <div class="p-4">
+                <h3 class="text-xl font-bold mb-2">Image 1</h3>
+                <p class="text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+        </div>
+        <div class="bg-gray-200 rounded-lg overflow-hidden shadow-lg">
+            <img src="https://via.placeholder.com/500" alt="Gallery Image" class="w-full h-64 object-cover object-center">
+            <div class="p-4">
+                <h3 class="text-xl font-bold mb-2">Image 2</h3>
+                <p class="text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+        </div>
+        <div class="bg-gray-200 rounded-lg overflow-hidden shadow-lg">
+            <img src="https://via.placeholder.com/500" alt="Gallery Image" class="w-full h-64 object-cover object-center">
+            <div class="p-4">
+                <h3 class="text-xl font-bold mb-2">Image 3</h3>
+                <p class="text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Image on the left, text on the right-->
+ 
+<div class="container mx-auto py-16 px-6">
+    <div class="flex flex-wrap items-center -mx-4">
+        <div class="w-full md:w-1/2 px-4 mt-8 md:mt-0">
+            <h2 class="text-3xl font-bold">About Me</h2>
+            <p class="mt-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.</p>
+        </div>
+        <div class="w-full md:w-1/2 px-4 text-right">
+            <img src="https://via.placeholder.com/500" alt="About Me" class="rounded-lg shadow-xl">
+        </div>
+    </div>
+</div>
+
+<!-- Three columns with a image on the left and text on the right on all three columns-->
+
+<div class="container mx-auto py-16 px-6">
+    <h2 class="text-3xl font-bold text-center mb-8">My Skills</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-lg shadow p-6">
+            <div class="flex items-center">
+                <img src="https://via.placeholder.com/150" alt="Programming" class="w-16 h-16 mr-4">
+                <h3 class="text-lg font-bold">Programming</h3>
+                
+            </div>
+            <div class="mt-4">
+                <p class="text-gray-600 ml-auto">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.</p>
+            </div>
+        </div>
+        <div class="bg-white rounded-lg shadow p-6">
+            <div class="flex items-center">
+                <img src="https://via.placeholder.com/150" alt="Web Design" class="w-16 h-16 mr-4">
+                <h3 class="text-lg font-bold">Web Design</h3>
+            </div>
+            <div class="mt-4">
+                <p class="text-gray-600 ml-auto">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.</p>
+            </div>
+        </div>
+        <div class="bg-white rounded-lg shadow p-6">
+            <div class="flex items-center">
+                <img src="https://via.placeholder.com/150" alt="App Development" class="w-16 h-16 mr-4">
+                <h3 class="text-lg font-bold">App Development</h3>
+            </div>
+            <div class="mt-4">
+                <p class="text-gray-600 ml-auto">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Create a contact form, with an address on the left and a contact form on the left-->
+
+<div class="container mx-auto py-16 px-6">
+    <div class="flex flex-wrap items-center -mx-4">
+        <div class="w-full md:w-1/2 px-4">
+            <h2 class="text-3xl font-bold">Contact Us</h2>
+            <p class="mt-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.</p>
+            <p class="mt-4">1234 Main St</p>
+            <p>Springfield, IL 62701</p>
+            <p class="mt-4">Phone: (123) 456-7890</p>
+            <p>Email:
+                <a href="mailto:your-email@example.com">your-email@example.com</a>
+            </p>
+        </div>
+        <div class="w-full md:w-1/2 px-4 mt-8 md:mt-0">
+            <form action="#" method="POST" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+                        Name
+                    </label>
+                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" type="text" placeholder="Name">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
+                        Email
+                    </label>
+                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="email" type="text" placeholder="Email">
+                </div>
+                <div class="mb-6">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="message">
+                        Message
+                    </label>
+                    <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="message" placeholder="Message"></textarea>
+                </div>
+                <div class="flex items-center justify-between">
+                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline" type="button">
+                        Send
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
