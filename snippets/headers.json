@@ -1,11 +1,11 @@
 [
     {
         "title": "Header 1",
-        "html": "<div class=\"relative bg-gradient-to-r from-purple-700 via-purple-600 to-purple-500 h-screen flex items-center justify-center\">n/           <div class=\"absolute inset-0 bg-black opacity-50\"></div>\n            <div class=\"container mx-auto text-center relative z-10\">\n                <h1 class=\"text-5xl font-extrabold text-white mb-4\">Explore the Galaxy</h1>\n                <p class=\"text-lg text-gray-300 mb-8\">Embark on a journey to discover new worlds and adventures.</p>\n                <a href=\"#\" class=\"bg-white text-purple-700 hover:bg-purple-800 hover:text-white font-bold py-2 px-6 rounded-full\">Start Exploring</a>\n            </div>\n        </div>"
+        "html": "<div class=\"relative bg-gradient-to-r from-purple-700 via-purple-600 to-purple-500 h-screen flex items-center justify-center\"> <div class=\"absolute inset-0 bg-black opacity-50\"></div> <div class=\"container mx-auto text-center relative z-10\"> <h1 class=\"text-5xl font-extrabold text-white mb-4\">Explore the Galaxy</h1> <p class=\"text-lg text-gray-300 mb-8\">Embark on a journey to discover new worlds and adventures.</p> <a href=\"#\" class=\"bg-white text-purple-700 hover:bg-purple-800 hover:text-white font-bold py-2 px-6 rounded-full\">Start Exploring</a> </div> </div>"
     },
     {
         "title": "Header 2",
-        "html": "<div class=\"min-h-screen flex items-center justify-center bg-gray-900\">  <div class=\"text-center text-white\"> <h1 class=\"text-4xl font-bold mb-4\">Your Hero Title</h1> <p class=\"text-lg mb-8\">Your hero subtitle or description goes here.</p> <a href=\"#\" class=\"bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full\">Get Started</a> </div> </div>>"
+        "html": "<div class=\"min-h-screen flex items-center justify-center bg-gray-900\">  <div class=\"text-center text-white\"> <h1 class=\"text-4xl font-bold mb-4\">Your Hero Title</h1> <p class=\"text-lg mb-8\">Your hero subtitle or description goes here.</p> <a href=\"#\" class=\"bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full\">Get Started</a> </div> </div>"
     },
     {
         "title": "Header 3",

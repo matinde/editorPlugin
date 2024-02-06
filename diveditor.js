@@ -1,9 +1,8 @@
 // Declare contextMenu as a global variable
 var contextMenu;
 
-// Add mouseover and mouseout event listeners to all div elements
-var divElements = document.querySelectorAll('div');
-divElements.forEach(function(divElement) {
+// Function to add event listeners to a div element
+function addEventListenersToDiv(divElement) {
     divElement.addEventListener('mouseover', function() {
         this.style.border = '2px solid purple';
         this.style.borderRadius = '5px';
@@ -11,7 +10,11 @@ divElements.forEach(function(divElement) {
     divElement.addEventListener('mouseout', function() {
         this.style.border = '';
     });
-});
+}
+
+// Add event listeners to all existing div elements
+var divElements = document.querySelectorAll('div');
+divElements.forEach(addEventListenersToDiv);
 
 document.addEventListener('contextmenu', function(event) {
     var divElement = event.target.closest('div');
@@ -32,8 +35,15 @@ document.addEventListener('contextmenu', function(event) {
         contextMenu.innerHTML = `
             <button style="display: block; margin: 10px; padding: 10px;" id="change-color">Change Background Color</button>
             <button style="display: block; margin: 10px; padding: 10px;" id="upload-image">Upload Background Image</button>
+            <button style="display: block; margin: 10px; padding: 10px;" id="delete-div">Delete Element</button>
         `;
         document.body.appendChild(contextMenu);
+
+        // Add event listener for delete button
+        document.getElementById('delete-div').addEventListener('click', function() {
+            divElement.remove();
+            contextMenu.remove();
+        });
 
         // Add event listener for change color button
         document.getElementById('change-color').addEventListener('click', function() {
@@ -69,9 +79,28 @@ document.addEventListener('contextmenu', function(event) {
         });
     }
 });
+
 // Remove the context menu when clicking anywhere else
 document.addEventListener('click', function() {
     if (contextMenu) {
         contextMenu.remove();
     }
+});
+
+// Assuming you have a drop zone with id 'drop-zone'
+var dropZone = document.getElementById('drop-zone');
+
+dropZone.addEventListener('drop', function(event) {
+    event.preventDefault();
+
+    // Assuming the data transferred is the HTML of the new element
+    var newElementHTML = event.dataTransfer.getData('text/html');
+    this.insertAdjacentHTML('beforeend', newElementHTML);
+
+    var newElement = this.lastElementChild;
+    addEventListenersToDiv(newElement);
+});
+
+dropZone.addEventListener('dragover', function(event) {
+    event.preventDefault();
 });
